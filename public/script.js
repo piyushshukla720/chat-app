@@ -59,7 +59,4 @@ function connectToNewUser(userId,stream){
    peers[userId]=call
 }
 
-function hangup(){
-myPeer.destroy()
-myVideo.remove()
-}
+
