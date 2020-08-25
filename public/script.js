@@ -25,6 +25,7 @@ navigator.mediaDevices.getUserMedia({
 })
 
 socket.on('user-disconnected',userId=>{
+  alert("disconnecting")
   if(peers[userId]) peers[userId].close()
 })
 
@@ -49,11 +50,16 @@ function connectToNewUser(userId,stream){
    const call = myPeer.call(userId,stream)
    const video = document.createElement('video')
    call.on('stream',userVideoStream => {
-       addVideoStream(userVideoStream)
+       addVideoStream(video,userVideoStream)
    })
-   call.on('cloase',()=>{
+   call.on('close',()=>{
        video.remove() 
    })
 
    peers[userId]=call
+}
+
+function hangup(){
+myPeer.destroy()
+myVideo.remove()
 }

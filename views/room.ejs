@@ -6,6 +6,9 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Room</title>
     <style>
+body {
+  background:#212121
+}
  #video-grid {  
      display: grid;
      grid-template-columns: repeat(auto-fill ,300px);
@@ -17,9 +20,21 @@
    height:100%;
    object-fit: cover;
  }
+
+ #hang-btn {
+   height:50px;
+   width:50px;
+   box-shadow:10px;
+   border-radius:25px;
+   position: absolute;
+   top: 80vh;
+   left: 50vw;
+   background: red;
+   color:white
+}
 </style>
     <script>
-      const ROOM_ID="<%= roomId %>"
+      const ROOM_ID="<%= roomId %>";
     </script>
     <script src="https://unpkg.com/peerjs@1.3.1/dist/peerjs.min.js" defer></script>
     <script src='/socket.io/socket.io.js' defer></script>
@@ -27,5 +42,6 @@
 </head>
 <body>
     <div id="video-grid"></div>
+    <div id='hang-btn' onClick="hangup()"></div>
 </body>
 </html>
