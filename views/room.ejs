@@ -75,6 +75,8 @@ body {
       }
     
       $(function(){
+       openNav()
+       setTimeout(function(){ closeNav() },5000)
       var pathArray = window.location.pathname.split('/');
       const id=pathArray[1];
       $("#roomid").text(id)
