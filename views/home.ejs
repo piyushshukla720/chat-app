@@ -19,7 +19,6 @@ outline: none
 }
 </style>
 <script>
-
 function generate(){
 document.getElementById('room').value = ("" + Math.random()).substring(2, 9);
 document.getElementById('join').disabled=false;
@@ -27,11 +26,15 @@ document.getElementById('join').disabled=false;
 
 $(function(){
 generate();
+var numbers = /^[0-9]+$/;
 $("#room").on('input',function(evt){
 var value=evt.target.value;
 document.getElementById('join').disabled=true;
 if(value.length<6){
 $("#warning-div").html(`<h6>Room Id must be 6 digits or more</h6>`)
+document.getElementById('join').disabled=true;
+}else if(!value.match(numbers)){
+ $("#warning-div").html(`<h6>Only digits allowed</h6>`)
 document.getElementById('join').disabled=true;
 }else{
 $("#warning-div").html("")
