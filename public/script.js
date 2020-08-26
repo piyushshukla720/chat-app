@@ -42,6 +42,7 @@ socket.on('user-connected',userId => {
 
 function addVideoStream(video,stream) {
     video.srcObject=stream
+    video.setAttribute("playsinline","")
     video.addEventListener('loadedmetadata',()=>{
         video.play()
     })
