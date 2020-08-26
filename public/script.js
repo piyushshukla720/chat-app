@@ -2,6 +2,7 @@ const socket=io('/')
 const videoGrid=document.getElementById('video-grid')
 const myPeer = new Peer()
 const myVideo = document.createElement('video')
+var videoStream=null
 myVideo.muted=true
 const peers={}
 navigator.mediaDevices.getUserMedia({
@@ -9,7 +10,7 @@ navigator.mediaDevices.getUserMedia({
     audio:true
 }).then(stream=>{
   addVideoStream(myVideo,stream)
-
+  videoStream=stream
   myPeer.on('call',call => {
       call.answer(stream)
       const video=document.createElement('video')
@@ -19,6 +20,7 @@ navigator.mediaDevices.getUserMedia({
 
   })
 
+ 
   socket.on('user-connected',userId => {
       connectToNewUser(userId,stream)
   })
@@ -57,6 +59,26 @@ function connectToNewUser(userId,stream){
    })
 
    peers[userId]=call
+}
+
+function toggleVideo(){
+if(videoStream.getVideoTracks()[0].enabled){
+videoStream.getVideoTracks()[0].enabled = false
+$('.vid-btn').html("<i class='fa fa-video-slash'></i>")
+}else{
+videoStream.getVideoTracks()[0].enabled = true
+$('.vid-btn').html("<i class='fa fa-video'></i>")
+}
+}
+
+function toggleAudio(){
+if(videoStream.getAudioTracks()[0].enabled){
+videoStream.getAudioTracks()[0].enabled = false
+$('.aud-btn').html("<i class='fa fa-microphone-slash'></i>")
+}else{
+videoStream.getAudioTracks()[0].enabled = true
+$('.aud-btn').html("<i class='fa fa-microphone'></i>")
+}
 }
 
 
