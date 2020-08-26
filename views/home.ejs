@@ -12,13 +12,20 @@
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+ <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet"> 
+ <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap" rel="stylesheet"> 
 <style>
+*{
+font-family: 'Roboto', sans-serif;
+}
+
 input:focus{
 border-bottom-color: #7C4DFF;
 outline: none
 }
 </style>
 <script>
+
 function generate(){
 document.getElementById('room').value = ("" + Math.random()).substring(2, 9);
 document.getElementById('join').disabled=false;
@@ -45,7 +52,27 @@ document.getElementById('join').disabled=false;
 })
 </script>
 </head>
-<body class='d-flex justify-content-center align-items-center' style='height:100vh;background:#212121'>
+<header class='fixed-top'>
+<div class="navbar navbar-expand-sm navbar-dark shadow-sm" style='background:#212121'>
+<div class="container"><span class="navbar-brand">
+<img src='./tutamis.svg' height=50 width=50/>
+</span>
+<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#mynav"><span class="navbar-toggler-icon" /></button>
+<div class="collapse navbar-collapse" id="mynav">
+<nav class="navbar-nav ml-auto">
+<a href="https://tutamis.com" class="nav-item nav-link">Home</a>
+<a href="https://tutamis.com/tutamis-lms" class="nav-item nav-link">Log In</a>
+<a href="https://tutamis.com#pricing" class="nav-item nav-link">Pricing</a>
+<a href="#contact" class="nav-item nav-link">Contact Us</a>
+<a href="https://tutamis.com/tutamis-lms/sign-up.php" class="nav-item nav-link text-success">Sign Up-Free</a>
+</nav>
+</div>
+</div>
+</div>
+</header>
+
+<body style='height:100vh;background:#212121'>
+ <div class='d-flex justify-content-center align-items-center h-100'>
   <form method="post" action="" id='join-group'>
       <div class='form-group text-light mt-2' id='warning-div'></div>
       <div class='form-group'>
@@ -54,5 +81,40 @@ document.getElementById('join').disabled=false;
       <button type='submit' id='join' class='btn text-light' style='background:#7C4DFF;box_shadow:10px'>Join</button>
       <button type='button' class='btn text-light' style='background:#7C4DFF' onClick="generate()">Generate</button>
   </form>  
+</div>
 </body>
+
+<footer class="page-footer font-small indigo" style="background:rgba(0,0,0,0.9);"  id="contact">
+<br><br>
+<div class="gradient"></div>
+    <!-- Footer Links -->
+    <div class="container">
+
+      <!-- Grid row-->
+      <div class="row text-center d-flex justify-content-center">
+
+        <!-- Grid column -->
+        <div class="col-md-12">
+            <a href="index.html"><img src='./tutamis.svg' height=60 width=55/></a>
+        </div>
+        <!-- Grid column -->
+
+      </div>
+      <!-- Grid row-->
+
+      <!-- Grid row-->
+      <div class="row d-flex text-center justify-content-center mb-md-0 pb-4">
+
+        <!-- Grid column -->
+        <div class="col-md-8 col-12">
+          <address style="color:white;">
+              <p><span>Tutamis E-Learning Solutions</span><br>
+              <a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-nd/4.0/80x15.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/4.0/">Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International License</a><br>
+              <span>Contact Us : 945 545 6541 ,805 236 7872</span></p>
+          </address>
+        </div>
+        <!-- Grid column -->
+
+      </div>
+  </footer>
 </html>
