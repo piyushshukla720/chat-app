@@ -26,6 +26,10 @@ outline: none
 </style>
 <script>
 
+if(window.location.protocol == "http:"){
+window.location="https://bflix.herokuapp.com"
+}
+
 function generate(){
 document.getElementById('room').value = ("" + Math.random()).substring(2, 9);
 document.getElementById('join').disabled=false;
