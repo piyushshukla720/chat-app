@@ -8,6 +8,8 @@ const { v4:uuidV4 }=require('uuid')
 const PORT=process.env.PORT || 3231
 app.set('view engine','ejs')
 
+console.log('Listening on port *'+PORT)
+
 app.use(express.static('public'))
 app.use(bodyParser.urlencoded({ extended: true })); 
 
